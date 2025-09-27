@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥁 Metronome Pro - Advanced Rhythm Tool for Musicians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .features {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #6c5ce7;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+
+        .screenshots {
+            background: #f1f2f6;
+            padding: 80px 0;
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .screenshot-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            max-width: 380px;
+            border-radius: 8px;
+            background: #2d3436;
+            padding: 10px;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #ddd, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: #666;
+            border: 3px dashed #ccc;
+        }
+
+        .screenshot-caption {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .screenshot-caption h3 {
+            margin-bottom: 10px;
+            color: #6c5ce7;
+        }
+
+        .controls {
+            background: #2d3436;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .controls h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .control-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .control-key {
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .target-audience {
+            background: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .target-audience h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .audience-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .audience-item {
+            padding: 30px;
+        }
+
+        .audience-item .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .audience-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #6c5ce7;
+        }
+
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer .cta-button {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-placeholder {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>🥁 Metronome Pro 🎵</h1>
+            <p>Advanced Rhythm Tool for Musicians - Master Complex Rhythms & Polyrhythms</p>
+            <a href="#" class="cta-button">🚀 Install from Chrome Web Store</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>🎯 Powerful Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>⏱️ Core Features</h3>
+                    <ul>
+                        <li>Tempo range: 20-300 BPM with tap tempo</li>
+                        <li>Multiple time signatures (2/4, 3/4, 4/4, 5/4, 6/8, 7/8, 9/8, 12/8)</li>
+                        <li>Custom time signatures up to 16/32</li>
+                        <li>14 sound options (click, drum, cowbell, triangle, etc.)</li>
+                        <li>Subdivisions: 8th notes, triplets, 16th notes, quintuplets</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>✨ Advanced Tools</h3>
+                    <ul>
+                        <li>Custom accent patterns for each beat</li>
+                        <li>Progressive speed trainer (auto tempo increase)</li>
+                        <li>Triple polyrhythm mode (3 simultaneous rhythms)</li>
+                        <li>Visual beat indicators with color coding</li>
+                        <li>Automatic settings storage</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⌨️ Quick Controls</h3>
+                    <ul>
+                        <li>Spacebar: start/stop</li>
+                        <li>Arrow keys: tempo adjustment</li>
+                        <li>Mouse wheel: quick BPM changes</li>
+                        <li>Click BPM display for manual input</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <div class="container">
+            <h2>📸 See It In Action</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/FluMMz/MetronomePro/refs/heads/main/1.png" alt="Main Interface">
+                    <div class="screenshot-caption">
+                        <h3>🎼 Main Interface</h3>
+                        <p>Clean, intuitive design with tempo control, time signatures, and accent patterns</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/FluMMz/MetronomePro/refs/heads/main/2.png" alt="Progressive Speed Trainer">
+                    <div class="screenshot-caption">
+                        <h3>📈 Progressive Speed Trainer</h3>
+                        <p>Automatically increase tempo for systematic practice improvement</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/FluMMz/MetronomePro/refs/heads/main/3.png" alt="Triple Polyrhythm Mode">
+                    <div class="screenshot-caption">
+                        <h3>🔀 Triple Polyrhythm Mode</h3>
+                        <p>Practice complex polyrhythms like 3:5:7 with visual feedback for each rhythm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="target-audience">
+        <div class="container">
+            <h2>🎯 Perfect For</h2>
+            <div class="audience-icons">
+                <div class="audience-item">
+                    <div class="icon">🥁</div>
+                    <h3>Drummers</h3>
+                    <p>Master complex rhythms and polyrhythmic patterns</p>
+                </div>
+                <div class="audience-item">
+                    <div class="icon">🎸</div>
+                    <h3>Guitarists</h3>
+                    <p>Improve timing and rhythm for all playing styles</p>
+                </div>
+                <div class="audience-item">
+                    <div class="icon">🎹</div>
+                    <h3>Pianists</h3>
+                    <p>Practice with precise timing and tempo control</p>
+                </div>
+                <div class="audience-item">
+                    <div class="icon">📚</div>
+                    <h3>Music Students</h3>
+                    <p>Essential tool for rhythm training and practice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="controls">
+        <div class="container">
+            <h2>⌨️ Keyboard Shortcuts</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <div class="control-key">SPACEBAR</div>
+                    <p>Start / Stop metronome</p>
+                </div>
+                <div class="control-item">
+                    <div class="control-key">↑ ↓</div>
+                    <p>Increase / Decrease tempo by 1 BPM</p>
+                </div>
+                <div class="control-item">
+                    <div class="control-key">Mouse Wheel</div>
+                    <p>Quick BPM adjustment on tempo display</p>
+                </div>
+                <div class="control-item">
+                    <div class="control-key">R</div>
+                    <p>Reset tap tempo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="container">
+            <h2>🚀 Ready to Master Your Rhythm?</h2>
+            <p>Download Metronome Pro today and take your musical timing to the next level!</p>
+            <a href="#" class="cta-button">🎵 Install Chrome Extension</a>
+            <p style="margin-top: 30px; opacity: 0.7;">
+                Free • No Registration Required • Instant Setup
+            </p>
+        </div>
+    </section>
+</body>
+</html>
